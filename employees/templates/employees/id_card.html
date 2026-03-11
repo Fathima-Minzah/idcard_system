@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Helvetica; }
+        .card {
+            width: 350px;
+            height: 220px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="{{ employee.photo.url }}" />
+        <h3>{{ employee.full_name }}</h3>
+        <p>{{ employee.designation }}</p>
+        <img src="{{ employee.qr_code.url }}" />
+    </div>
+</body>
+</html>
+
+

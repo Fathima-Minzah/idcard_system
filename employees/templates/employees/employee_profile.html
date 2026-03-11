@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PragICTS | Employee Profile</title>
+    {% load static %}
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'employees/pragicts-favicon.png' %}" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border: 3px solid red;
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 95%;
+            max-width: 650px;
+            /* bigger card */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-card img.logo {
+            width: 200px;
+            margin-bottom: 5px;
+        }
+
+        .profile-card img.photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 3px solid red;
+            margin: 25px 0;
+        }
+
+        h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .employee-details {
+            width: 100%;
+            max-width: 450px;
+            margin: auto;
+            /* centers the table */
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .label {
+            font-weight: bold;
+            width: 220px;
+            text-align: right;
+        }
+
+        .value {
+            width: 250px;
+            text-align: left;
+        }
+
+        /* Mobile */
+        @media (max-width:600px) {
+
+            .profile-card {
+                padding: 30px 15px;
+            }
+
+            h3 {
+                font-size: 22px;
+            }
+
+            .profile-card img.logo {
+                width: 150px;
+            }
+
+            .profile-card img.photo {
+                width: 160px;
+                height: 160px;
+            }
+
+            .row {
+                font-size: 15px;
+            }
+
+            .label {
+                width: 140px;
+            }
+        }
+
+        #custom-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 8px 0;
+            background: #ffffff;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-card">
+
+        <div class="row">
+            <img src="{% static 'employees/logo.png' %}" class="logo" alt="Logo">
+            <!--<h3>Staff Verification | PragICTS</h3>-->
+        </div>
+
+        <img src="{{ employee.photo.url }}" class="photo" alt="Employee Photo">
+
+        <h3>{{ employee.first_name }} {{ employee.last_name }}</h3>
+        <div class="employee-details">
+
+            <div class="row">
+                <span class="label">Designation:</span>
+                <span class="value">{{ employee.designation }}</span>
+            </div>
+
+            <div class="row">
+                <span class="label">NIC:</span>
+                <span class="value">{{ employee.nic }}</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Staff Contact:</span>
+                <span class="value">{{ employee.staff_mobile }}</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Direct Report's Name:</span>
+                <span class="value">{{ employee.manager_name }}</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Direct Report's Mobile Number:</span>
+                <span class="value">{{ employee.manager_mobile }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="custom-footer">
+        <span class="engineered">Engineered by </span>
+        <a href="https://www.pragicts.com" target="_blank" rel="noopener noreferrer" style="color: #D32F2F; font-weight: bold;">
+            PragICTS
+        </a>
+    </div>
+
+
+</body>
+
+</html>
