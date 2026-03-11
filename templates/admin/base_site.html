@@ -1,0 +1,334 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}PRAGICTS STAFF VERIFICATION PLATFORM{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+
+    <style>
+        /* Change breadcrumb bar background */
+.breadcrumbs {
+    background-color: #EE3545 !important;  /* PragICTS Red */
+    color: white !important;
+}
+
+/* Breadcrumb text color */
+.breadcrumbs a {
+    color: white !important;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   PRIMARY BUTTONS (Add, Save, Go, etc.)
+========================= */
+
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+    background-color: #D32F2F !important;   /* PragICTS Red */
+    border-color: #B71C1C !important;
+    color: white !important;
+}
+
+/* Hover state */
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+.submit-row input:hover,
+a.button:hover {
+    background-color: #B71C1C !important;   /* Darker red */
+    border-color: #8E0000 !important;
+    color: white !important;
+}
+
+/* Add button (+ ADD USER, + ADD etc.) */
+.addlink {
+    background-color: #FFFFFF !important;
+    color: black !important;
+}
+
+/* Action dropdown GO button */
+.actions .button {
+    background-color: #D32F2F !important;
+    color: white !important;
+}
+
+/* Filter panel button headers */
+#changelist-filter h2 {
+    background-color: #FFFFFF !important;
+    color: white !important;
+}
+
+.logout-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 11px;
+
+}
+
+.logout-link:hover {
+    color: inherit;
+}
+
+
+/* =========================================
+   DARK MODE SUPPORT
+========================================= */
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #0f0f0f;
+        color: #2b2a2a !important;
+    }
+
+    /* Header */
+    #header {
+        background-color: #1e1e1e;
+        color: #3f3f3f !important;
+    }
+
+    #header h1,
+    #header a,
+    #header #user-tools a {
+        color: #3e3e3e !important;
+    }
+
+    /* Sidebar */
+    #sidebar {
+        background-color: #1a1a1a !important;
+        border-right: 1px solid #333;
+    }
+
+    #sidebar a {
+        color: #dddddd !important;
+    }
+
+    #sidebar a:hover {
+        color: #ffffff !important;
+    }
+
+    #sidebar h2 {
+        color: #ffffff !important;
+        border-bottom: 1px solid #444;
+    }
+
+
+    /* Content */
+    #content {
+        background-color: #181818 !important;
+        color: #e0e0e0 !important;
+    }
+
+    .module {
+        background-color: #222222 !important;
+        border: 1px solid #444;
+        color: #FFFFFF !important;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        background-color: #a3a1a1 !important;
+        color: #e0e0e0 !important;
+    }
+
+    /* Tables */
+    thead th {
+        background-color: #2a2a2a !important;
+        color: #ffffff !important;
+    }
+
+    tbody tr {
+        background-color: #1a1a1a;
+        color: #ffffff !important;
+    }
+
+    tbody tr:hover {
+        background-color: #2a2a2a;
+    }
+
+    /* Filter panel button headers */
+#changelist-filter h2 {
+    background-color: #FFFFFF !important;
+    color: rgb(51, 51, 51) !important;
+}
+
+    /* Add button (+ ADD USER, + ADD etc.) */
+.addlink {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+label {
+        color: black !important;
+    }
+
+    /* Links */
+    #content-main a {
+        color: #ff6b6b;
+    }
+
+    #content-main a:hover {
+        color: #ff8a8a;
+    }
+
+    /* Footer */
+    #footer {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+
+    #footer a {
+        color: #ff6b6b;
+    }
+
+}
+
+    </style>
+
+        <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'employees/pragicts-favicon.png' %}" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'admin_custom.css' %}">
+
+    <script>
+    function updateDateTime() {
+        const now = new Date();
+        const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        const dayName = days[now.getDay()];
+        const date = now.getDate();
+        const month = now.toLocaleString('default', { month: 'long' });
+        const year = now.getFullYear();
+
+        function getOrdinal(n) {
+            if (n > 3 && n < 21) return n + "th";
+            switch (n % 10) {
+                case 1: return n + "st";
+                case 2: return n + "nd";
+                case 3: return n + "rd";
+                default: return n + "th";
+            }
+        }
+
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+
+        const formatted =
+            `${dayName}, ${getOrdinal(date)} ${month} ${year} | ${hours}:${minutes}`;
+
+        const element = document.getElementById("live-datetime");
+        if (element) {
+            element.innerHTML = formatted;
+        }
+    }
+
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
+    </script>
+{% endblock %}
+
+{% block branding %}
+
+<script>
+function confirmLogout() {
+    return confirm("Are you sure you want to log out?");
+}
+</script>
+
+
+<div style="
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 20px;
+    width:100%;
+    border-color: #000;
+">
+
+    <!-- Left Section (Logo + Title) -->
+    <div style="display:flex; align-items:center; gap:12px;">
+
+        <img src="{% static 'employees/pragicts-favicon.png' %}" 
+             alt="PragICTS Logo"
+             style="height:50px;">
+
+        <h1 style="margin:0; font-size:16px; font-weight:700; color:#000;">
+            PRAGICTS STAFF VERIFICATION PLATFORM
+        </h1>
+
+    </div>
+
+    <!-- Right Section (Date & Time) -->
+    <div style="font-weight:600; font-size:12px; margin-left: 40px;">
+        <span id="live-datetime"></span>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block userlinks %}
+    {% if site_url %}<a href="{{ site_url }}">View site</a> |{% endif %}
+    {% if user.has_usable_password %}
+        <a href="{% url 'admin:password_change' %}">Change password</a> |
+    {% endif %}
+    <!--<a href="{% url 'admin:logout' %}">Log out</a>-->
+    <form action="{% url 'admin:logout' %}" method="post" style="display:inline;" onsubmit="return confirmLogout();">
+        {% csrf_token %}
+        <button type="submit" class="logout-link">LOG OUT</button>
+    </form>
+    
+{% endblock %}
+
+{% block footer %}
+
+<style>
+    /* Footer styling */
+#custom-footer {
+    background-color: white;
+    padding: 12px 0;
+    text-align: center;
+    border-top: 1px solid #EE3545;
+    font-size: 14px;
+}
+
+#custom-footer a {
+    color: #EE3545;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#custom-footer a:hover {
+    opacity: 0.8;
+}
+
+.engineered {
+    color: #959595;
+}
+
+/* Breadcrumb bar */
+.breadcrumb {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    padding: 8px 12px;
+    border-radius: 3px;
+}
+
+</style>
+<div id="custom-footer">
+    <span class="engineered">Engineered by </span>
+    <a href="https://www.pragicts.com" target="_blank" rel="noopener noreferrer">
+        PragICTS
+    </a>
+</div>
+{% endblock %}

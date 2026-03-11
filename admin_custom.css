@@ -1,0 +1,349 @@
+/* =========================================
+   PragICTS Django Admin Branding
+   Red: #D32F2F
+   White Canvas: #FFFFFF
+   Ash (optional accent): #2E2E2E
+========================================= */
+/* Make admin container a flex column */
+#container {
+    min-height: 500vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make content stretch to push footer down */
+#content {
+    flex: 1;
+}
+/* ===== Navbar / Header ===== */
+#header {
+    background-color: white; /* PragICTS Red */
+    color: black;
+}
+#header h1, #header a {
+    color: black;
+     font-weight: bold !important;
+}
+
+/* ===== Top nav bar links (welcome, change password) ===== */
+#header #user-tools a {
+    color: black;
+    font-weight: bold !important;
+}
+#header #user-tools a:hover {
+    color: black;
+}
+
+/* ===== Sidebar ===== */
+#sidebar {
+    background-color: black !important; /* white canvas */
+    color: #000000 !important;            /* black text */
+    border-right: 1px solid #DDD;
+}
+
+/* Sidebar links */
+#sidebar a {
+    color: #000000 !important;
+    text-decoration: none;
+}
+#sidebar a:hover {
+    color: #444 !important; /* PragICTS Red hover */
+}
+
+/* Sidebar section headings (h2) */
+#sidebar h2 {
+    color: rgb(255, 255, 255) !important;  /* PragICTS Red headings */
+    background-color: transparent !important;
+    border-bottom: 1px solid #DDD;
+    padding-bottom: 4px;
+}
+
+/* ===== Content area ===== */
+#content {
+    background-color: #FFFFFF; /* White canvas */
+    padding: 20px;
+    color: #000000;
+}
+
+/* Breadcrumb bar */
+.breadcrumb {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    padding: 8px 12px;
+    border-radius: 3px;
+}
+
+/* ===== Table headers ===== */
+thead th {
+    background-color: white !important; /* PragICTS Red */
+    color: black !important;
+}
+
+
+/* ===== Buttons ===== */
+/*button, .button, input[type=submit], .addlink {
+    background-color: #D32F2F;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+button:hover, .button:hover, input[type=submit]:hover, .addlink:hover {
+    background-color: #B71C1C; 
+}*/
+
+/* ===== Footer ===== */
+#footer {
+    background-color: white; /* PragICTS Red */
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+}
+#footer a {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+}
+#footer a:hover {
+    color: #FFDADA;
+}
+
+/* ===== Miscellaneous ===== */
+.module {
+    background-color: #FFFFFF !important; /* content modules white */
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Highlight selected items in list views */
+tr.selected {
+    background-color: #FFF0F0 !important; /* light red highlight */
+}
+
+/* Hover effect for rows */
+tr:hover {
+    background-color: #FFEAEA;
+}
+
+/* Change sidebar headers (optional, for better consistency) */
+.module caption {
+    background-color: #777777; /* slightly lighter gray */
+    color: white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+/* Optional: hover effect for sidebar links */
+#content-main a {
+    color: black; /* normal link color */
+}
+
+#content-main a:hover {
+    color: #333; /* hover color */
+}
+
+/* Push footer to bottom */
+#content {
+    flex: 1;
+}
+
+.logout-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 11px;
+
+}
+
+.logout-link:hover {
+    color: inherit;
+}
+
+/* =========================================
+   MOBILE / PORTRAIT VIEW FIXES
+========================================= */
+
+@media (max-width: 1024px) {
+
+    #container {
+    min-height: 250vh;
+    display: flex;
+    flex-direction: column;
+   }
+
+
+    /* Header */
+    #header {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+    }
+
+    #header a {
+        color: #000000 !important;
+    }
+
+    /* Mobile menu toggle (hamburger) */
+    .toggle-nav-sidebar {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+    }
+
+    /* Sidebar (mobile drawer style) */
+    #nav-sidebar {
+        background-color: #fff !important;
+    }
+
+    #nav-sidebar a {
+        color: #FFFFFF !important;
+    }
+
+    #nav-sidebar a:hover {
+        background-color: #2E2E2E !important;
+        color: #FFFFFF !important;
+    }
+
+    /* Breadcrumb */
+    .breadcrumbs {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+    }
+
+    /* Tables */
+    thead th {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+    }
+
+    /* Buttons */
+    .button,
+    input[type=submit],
+    input[type=button],
+    .submit-row input {
+        background-color: #D32F2F !important;
+        color: #FFFFFF !important;
+        border: none !important;
+        border-radius: 5px !important;
+    }
+
+    .button:hover,
+    input[type=submit]:hover,
+    input[type=button]:hover {
+        background-color: #B71C1C !important;
+    }
+
+    /* Form modules */
+    .module {
+        background-color: #FFFFFF !important;
+        border: 1px solid #DDD !important;
+    }
+
+    /* Selected row */
+    tr.selected {
+        background-color: #FFF0F0 !important;
+    }
+
+    tr:hover {
+        background-color: #FFEAEA !important;
+    }
+}
+
+/* =========================================
+   DARK MODE SUPPORT
+========================================= 
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+
+    #header {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+
+    #header h1,
+    #header a,
+    #header #user-tools a {
+        color: #ffffff !important;
+    }
+
+
+    #sidebar {
+        background-color: #1a1a1a !important;
+        border-right: 1px solid #333;
+    }
+
+    #sidebar a {
+        color: #dddddd !important;
+    }
+
+    #sidebar a:hover {
+        color: #ffffff !important;
+    }
+
+    #sidebar h2 {
+        color: #ffffff !important;
+        border-bottom: 1px solid #444;
+    }
+
+
+    #content {
+        background-color: #181818 !important;
+        color: #e0e0e0;
+    }
+
+    .module {
+        background-color: #222222 !important;
+        border: 1px solid #444;
+    }
+
+
+    .breadcrumb {
+        background-color: #1f1f1f !important;
+        color: #e0e0e0 !important;
+    }
+
+
+    thead th {
+        background-color: #2a2a2a !important;
+        color: #ffffff !important;
+    }
+
+    tbody tr {
+        background-color: #1a1a1a;
+    }
+
+    tbody tr:hover {
+        background-color: #2a2a2a;
+    }
+
+
+    #content-main a {
+        color: #ff6b6b;
+    }
+
+    #content-main a:hover {
+        color: #ff8a8a;
+    }
+
+
+    #footer {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+
+    #footer a {
+        color: #ff6b6b;
+    }
+
+}*/

@@ -1,0 +1,94 @@
+
+#company-logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 200px;  /* Adjust logo size */
+}
+
+/* Full page background */
+body.login {
+    background-color: #f4f6f9;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Centering container */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login box */
+.login-box {
+    background: #ffffff;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.login-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #D32F2F; /* PragICTS Red */
+    font-weight: 600;
+}
+
+/* Input group */
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Inputs */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #D32F2F;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
+}
+
+/* Button */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #D32F2F;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-button:hover {
+    background: #b71c1c;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-box {
+        padding: 25px;
+        margin: 15px;
+    }
+}

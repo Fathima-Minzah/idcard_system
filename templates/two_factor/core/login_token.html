@@ -1,0 +1,159 @@
+<!--{% load static %}
+{% block content %}
+
+<style>
+    body { background-color: white; font-family: Arial, sans-serif; }
+    .login-container {
+        max-width: 400px;
+        margin: 80px auto;
+        padding: 30px;
+        background-color: #fff;
+        color: #000;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .login-container h2 { color: #D32F2F; text-align: center; margin-bottom: 20px; }
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    .btn-primary {
+        background-color: #D32F2F;
+        color: white;
+        padding: 12px;
+        width: 100%;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
+
+<div class="login-container">
+    <h2>Enter 2FA Token</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ wizard.management_form }}
+        {{ wizard.form.non_field_errors }}
+
+        {% for field in wizard.form %}
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        {% endfor %}
+
+        <button type="submit" class="btn-primary">Verify</button>
+    </form>
+</div>
+
+{% endblock %}-->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PragICTS | Admin Login - 2FA</title>
+        <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'employees/pragicts-favicon.png' %}" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e6e6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-card {
+            background: white;
+            width: 450px;
+            padding: 50px 40px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .login-card img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #EE3545;
+            margin: 10px 0 20px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .description {
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 93%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 2px solid #000;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #EE3545;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <img src="{% static 'employees/logo.png' %}" alt="Logo">
+
+    <h2>Admin Login</h2>
+    <div class="description">
+        Scan the QR code below and enter the 6-digit code.
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ wizard.management_form }}
+        {{ wizard.form.non_field_errors }}
+
+        {% for field in wizard.form %}
+            <label>{{ field.label }}</label>
+            {{ field }}
+            {{ field.errors }}
+        {% endfor %}
+
+        <button type="submit">VERIFY & CONTINUE</button>
+    </form>
+</div>
+
+</body>
+</html>
